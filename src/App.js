@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Routes
+} from "react-router-dom";
+// import Dexie from 'dexie';
+import Users from "./pages/Users/Users";
+import SingleUser from "./pages/SingleUser/SingleUser";
+import './App.scss';
+
+
+// const db = new Dexie('lendsqr');
+// db.version(1).stores({
+//   users: ''
+// })
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router >
+                <Routes >
+                    <Route path="/">
+                        <Route path='users' >
+                            <Route index element={ <Users />} />
+                            <Route path=':userid' element={ <SingleUser/>} > </Route>
+                        </Route>
+                    </Route>
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
