@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { FaEye, FaEyeSlash, FaAngleDown} from "react-icons/fa";
+import { useState } from "react";
 import Logo from '../../components/Logo/Logo';
 import './login.scss';
 
@@ -38,44 +37,11 @@ function Login() {
         const {name, value } = e.target;
 
         setformValues({...formValues, [name]: value});
-
-        // if( validateFormInputs(name, value)) {
-        //     if(errors.includes(name)) {
-        //         seterrors( errors.filter((x)=>  x !== name ) )
-        //     }
-
-        //     if(e.target.parentElement.querySelector('.error-message') && (name !== 'type')) {
-        //         e.target.parentElement.querySelector('.error-message').style.display = 'none';
-        //         e.target.parentElement.style.border = '1px solid #ccc';
-        //         e.target.parentElement.querySelector('.legend').style.color = 'rgb(116, 113, 113)';
-        //     }
-
-        // }else{
-        //     if(!(errors.includes(name))){
-        //         seterrors([...errors, name]);
-        //     }
-
-        //     e.target.parentElement.style.border = '1px solid red';
-        //     e.target.parentElement.querySelector('.legend').style.color = 'red';
-        //     e.target.parentElement.querySelector('.error-message').style.display = 'block';
-        //     document.querySelector('.signup-form input[type="submit"] ').classList.add('submit_disabled');
-        // }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
     };
-
-
-
-    // because of the async nature of state update
-    // useEffect(() => {
-    //     if( (Object.values(formValues).every(x => x !== '')) && (errors.length === 0)){
-    //         document.querySelector('.signup-form input[type="submit"] ').classList.remove('submit_disabled');
-    //     }
-    // },[errors, formValues]);
-
-
 
 
   return (
@@ -101,8 +67,7 @@ function Login() {
                             <input type= { passwordVisible ? "text" : "password" } placeholder="Password" name="password" value={ formValues.password } onChange={ handleInputChange } ></input>
                             <div className="legend" tabIndex="0" >Password</div>
                             <span className="toggle-password" onClick={ displayPassword }>
-                                {/* { passwordVisible ? <FaEyeSlash  className="fa-icons"/> :<FaEye onClick={ displayPassword }className="fa-icons"/>  } */}
-                                { passwordVisible ? "Show" : "Hide" }
+                                { passwordVisible ? "Hide" : "Show" }
                             </span>
                         </fieldset>
 

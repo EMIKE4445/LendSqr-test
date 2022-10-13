@@ -68,6 +68,7 @@ The project dependencies are as follows:
 The project mode of operation is as follows:
 
 - The project by default opens up on 404 component page
+- Login page can be visited at /login
 - To visit users page, navigate to /users
 - The user can choose to filter the Users Table by clicking the filter button and filling the form.
 - The user can also choose to sort the users table by clicking the piramid icon in the table header row
