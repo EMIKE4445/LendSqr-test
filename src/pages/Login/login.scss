@@ -1,0 +1,201 @@
+@import '/src/assets/sass/mixins/breakpoints';
+
+
+
+.login-page-container {
+        padding: var(--page-inline-padding);
+        position: relative;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include breakpoint(670px) {
+            justify-content: unset;
+        }
+
+        .logo {
+            position: relative;
+            top: -50px;
+            padding-inline: 5%;
+
+            @include breakpoint(670px) {
+                top: -15%;
+                top: unset;
+                padding-inline: unset;
+            }
+
+            svg {
+                width: 173.76px;
+                height: 36px;
+
+                @include sm {
+                    width: 100px;
+                }
+            }
+        }
+
+        .login-page-content-container {
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+
+           @include breakpoint(670px) {
+                grid-template-columns: 1fr;
+            }
+
+
+            .login-page-right-content-container, .login-page-left-content-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    // top: -50px;
+            }
+
+            .login-page-left-content-container {
+                img {
+                    width: 600px;
+                    height: 337.57px;
+
+                    @include lg {
+                        width: 450px;
+                        height: auto;
+                    }
+                    @include md {
+                        width: 360px;
+                    }
+                    @include breakpoint(670px) {
+                      width: 300px;
+                    }
+                }
+            }
+
+            .login-page-right-content-container {
+                align-items: flex-start;
+                gap: 20px;
+
+                // * {
+                //     font-family: 'Avenir Next';
+                // }
+                @include breakpoint(670px) {
+                   align-items: center;
+                }
+
+                .login-text {
+                    font-size: 3rem;
+                    font-weight: 700;
+                    color: var(--primary-color);
+                    letter-spacing: -0.04em;
+                    line-height: 55px;
+
+                    @include md {
+                        line-height: unset;
+                        font-size: 2rem;
+                    }
+                }
+                .alternate-login-text{
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 27px;
+                    color: var(--secondary-color);
+                }
+
+
+                .login-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 40px;
+                    /* width: ; */
+
+                    @include lg {
+                        gap: 25px;
+                    }
+                    @include md {
+                        gap: 15px;
+                    }
+
+                    fieldset {
+                        border: 0;
+                        width:fit-content;
+                        height: fit-content;
+                        padding: 1px;
+                        border-radius: 5px;
+                        border: 2px solid rgba(84, 95, 125, 0.15);
+                        position: relative;
+                    }
+                    fieldset:focus-within input::placeholder {
+                        color: transparent;
+                    }
+
+                    input {
+                        width: 447px;
+                        height: 50px;
+                        border: 0;
+                        outline: none;
+                        padding-inline-start: 15px;
+                        color: var(--secondary-color);
+
+                        @include lg {
+                            width: 340px;
+                            height: 40px;
+                        }
+
+                        @include md {
+                            width: 270px;
+                            height: 32px;
+                        }
+
+                        @include sm {
+                            width: 252px;
+                            height: 26px;
+                        }
+                    }
+
+                    input:not([type="submit"]) {
+                        opacity: 0.6;
+                    }
+
+                    .legend {
+                        display: none;
+                        position: absolute;
+                        top: -10px;
+                        left: 0;
+                        background-color: #fff;
+                        color: rgb(116, 113, 113);
+                        margin-inline-start: 15px;
+                        opacity: 0.9;
+                    }
+
+                    .forgot-password, .toggle-password {
+                        color: var(--green);
+                        text-transform: uppercase;
+
+                        @include lg {
+                            font-size: 14px;
+                        }
+                        @include md {
+                            font-size: 10px;
+                        }
+                    }
+
+                    input[type="submit"] {
+                        text-transform: capitalize;
+                        background-color: var(--green);
+                        color: #fff;
+                        cursor: pointer;
+                        font-weight: 700;
+                    }
+                    fieldset:focus-within > .legend, .login-form input:not(:placeholder-shown)  ~ .legend {
+                        display: inline-block;
+                    }
+                    .toggle-password {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 18px;
+                    }
+                }
+            }
+        }
+}

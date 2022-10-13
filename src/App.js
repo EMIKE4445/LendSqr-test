@@ -1,32 +1,40 @@
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
-    Link,
+    Navigate ,
     Routes
 } from "react-router-dom";
-// import Dexie from 'dexie';
+
 import Users from "./pages/Users/Users";
 import SingleUser from "./pages/SingleUser/SingleUser";
+import UserGeneralDetails from './components/UserGeneralDetails/UserGeneralDetails';
+import Error from "./pages/Error/Error";
+import Login from "./pages/Login/Login";
 import './App.scss';
 
-
-// const db = new Dexie('lendsqr');
-// db.version(1).stores({
-//   users: ''
-// })
 
 function App() {
     return (
         <div className="App">
             <Router >
                 <Routes >
-                    <Route path="/">
+                    <Route path="/" >
+                        <Route index element={ <Error />} />
+                        <Route path='/login' element={ <Login />}/>
                         <Route path='users' >
                             <Route index element={ <Users />} />
-                            <Route path=':userid' element={ <SingleUser/>} > </Route>
+                            <Route path=":userId" element={ <SingleUser/>} >
+                                <Route index element={<Navigate to="general" replace />} />
+                                <Route path='general' element={ <UserGeneralDetails /> } />
+                                <Route path='*' element={ <Error />}/>
+                            </Route>
+                            <Route path='*' element={ <Error />}/>
                         </Route>
+                        <Route path='/' element={ <Error />}/>
+                        <Route path='*' element={ <Error />}/>
                     </Route>
+                    <Route path='/error' element={ <Error />}/>
+                    <Route path='*' element={ <Error />}/>
                 </Routes>
             </Router>
         </div>

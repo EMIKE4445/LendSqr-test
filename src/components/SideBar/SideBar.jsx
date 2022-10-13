@@ -1,25 +1,48 @@
 import './sidebar.scss';
-import  { Link } from  "react-router-dom";
+import  { NavLink } from  "react-router-dom";
 
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
-import HomeIcon from '@mui/icons-material/Home';
-import PeopleIcon from '@mui/icons-material/People';
-import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
-import PaidIcon from '@mui/icons-material/Paid';
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import SavingsIcon from '@mui/icons-material/Savings';
-import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import { useState } from 'react';
+
+import MenuIcon from '@mui/icons-material/Menu';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+// import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+// import HomeIcon from '@mui/icons-material/Home';
+// import PeopleIcon from '@mui/icons-material/People';
+// import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+// import PaidIcon from '@mui/icons-material/Paid';
+// import HandshakeIcon from '@mui/icons-material/Handshake';
+// import SavingsIcon from '@mui/icons-material/Savings';
+// import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
+// import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+// import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import {
+    DashboardIcon, BriefcaseIcon, GurrantorsIcon, LoanIcon, HandshakeIcon,
+    SavingsIcon, LoanRequestsIcon, UserCheckIcon, UserCancelIcon, SavingsProductsIcon,
+    FeesIcon, TransactionsIcon, ServicesIcon, UsersIcon, ServiceAccountIcon,
+    SettlementsIcon, ReportsIcon, PreferencesIcon, PricingIcon, AuditIcon,
+    SystemMessageIcon, LogoutIcon
+} from './SideBarIcons';
+
+
 
 
 const SideBar = () => {
+
+    const [ showSidebar, setShowSidebar] = useState(false);
+
+    const toggleSidebar = () => {
+        setShowSidebar(!showSidebar);
+    }
+
     return (
         <div className="sidebar-container">
-            <div className="sidebar-content">
+            <div className="sidebar-hamburger" onClick={toggleSidebar}><MenuIcon /></div>
+            <div className={showSidebar? "sidebar-content show-sidebar" : "sidebar-content hide-sidebar" }>
                 <div className="switch-org">
-                    <WorkOutlineIcon />
+                    <BriefcaseIcon />
                     <span>Switch Organization</span>
                     <ExpandMoreIcon />
                 </div>
@@ -27,10 +50,10 @@ const SideBar = () => {
                 <div className="section">
                     <ul>
                         <li>
-                            <Link to="/dashboard">
-                                <HomeIcon />
+                            <NavLink to="/dashboard">
+                                <DashboardIcon />
                                 <span>Dashboard</span>
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
@@ -41,52 +64,52 @@ const SideBar = () => {
                     </span>
                     <ul>
                         <li>
-                            <Link to="/users">
-                                <PeopleIcon />
+                            <NavLink to="/users">
+                                <UsersIcon />
                                 <span>users</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PeopleOutlineIcon />
+                            <NavLink to="/gurrantors">
+                                <GurrantorsIcon />
                                 <span>gurrantors</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PaidIcon />
+                            <NavLink to="/loans">
+                                <LoanIcon />
                                 <span>loans</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
+                            <NavLink to="/decision-Models">
                                 <HandshakeIcon />
                                 <span>Decision Models</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
+                            <NavLink to="/savings">
                                 <SavingsIcon />
                                 <span>savings</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <RequestQuoteIcon />
+                            <NavLink to="/loan-requests">
+                                <LoanRequestsIcon />
                                 <span>loan requests</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PersonAddAltIcon />
+                            <NavLink to="/whitelist">
+                                <UserCheckIcon />
                                 <span>whitelist</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PersonRemoveIcon />
+                            <NavLink to="/karma">
+                                <UserCancelIcon />
                                 <span>karma</span>
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
@@ -97,58 +120,58 @@ const SideBar = () => {
                     </span>
                     <ul>
                         <li>
-                            <Link to="/">
-                                <WorkOutlineIcon />
+                            <NavLink to="/organization">
+                                <BriefcaseIcon />
                                 <span>organization</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <RequestQuoteIcon />
+                            <NavLink to="/loan-products">
+                                <LoanRequestsIcon />
                                 <span>loan products</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PaidIcon />
+                            <NavLink to="/savings-Products">
+                                <SavingsProductsIcon />
                                 <span>Savings Products</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <HandshakeIcon />
+                            <NavLink to="/Fees">
+                                <FeesIcon />
                                 <span>Fees and Charges</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <SavingsIcon />
+                            <NavLink to="/transactions">
+                                <TransactionsIcon />
                                 <span>Transactions</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <RequestQuoteIcon />
+                            <NavLink to="/services">
+                                <ServicesIcon />
                                 <span>Services</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PersonAddAltIcon />
+                            <NavLink to="/service-account">
+                                <ServiceAccountIcon />
                                 <span>Service Account</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <PersonRemoveIcon />
+                            <NavLink to="/settlements">
+                                <SettlementsIcon />
                                 <span>Settlements</span>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/">
-                                <RequestQuoteIcon />
+                            <NavLink to="/reports">
+                                <ReportsIcon />
                                 <span>Reports</span>
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
@@ -159,29 +182,35 @@ const SideBar = () => {
                 </span>
                 <ul>
                     <li>
-                        <Link to="/">
-                            <WorkOutlineIcon />
-                            <span>organization</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/">
-                            <RequestQuoteIcon />
+                        <NavLink to="/Preferences">
+                            <PreferencesIcon />
                             <span>Preferences</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/">
-                            <PaidIcon />
+                        <NavLink to="/fees-and-pricing">
+                            <PricingIcon />
                             <span>Fees and Pricing</span>
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/">
-                            <HandshakeIcon />
+                        <NavLink to="/audit-Logs">
+                            <AuditIcon />
                             <span>Audit Logs</span>
-                        </Link>
+                        </NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/Messages">
+                            <SystemMessageIcon />
+                            <span>Systems Messages</span>
+                        </NavLink>
+                    </li>
+                    <li>
+                            <NavLink to="/Logout">
+                                <LogoutIcon />
+                                <span>Logout</span>
+                            </NavLink>
+                        </li>
                 </ul>
             </div>
             </div>

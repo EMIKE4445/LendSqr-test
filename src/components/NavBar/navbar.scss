@@ -1,9 +1,11 @@
+@import '/src/assets/sass/mixins/breakpoints';
+
 .navbar {
     grid-column:1/-1;
     display: grid;
     grid-template-columns: var(--page-grid-template-columns);
     align-items: center;
-    padding-inline: 40px;
+    padding-inline: var(--page-inline-padding);
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
     height: 100px;
 
@@ -13,6 +15,15 @@
         svg {
             width: 144px;
             height: 30px;
+
+            @include sm {
+                width: 110px;
+                height: 20px;
+            }
+
+            @include xs {
+                width: 90px;
+            }
         }
     }
 
@@ -29,6 +40,14 @@
             border-radius: 8px;
             position: relative;
 
+            @include lg {
+                width: fit-content;
+            }
+
+            @include md {
+                display: none;
+            }
+
             input {
                 border: none;
                 outline: none;
@@ -36,6 +55,10 @@
                 height: 40px;
                 width: 344px;
                 padding-inline-start: 10px;
+
+                @include lg {
+                    width: 250px;
+                }
 
 
                 &::placeholder {
@@ -69,6 +92,10 @@
                 flex-direction: row;
                 align-items: center;
                 gap: 30px;
+
+                @include sm {
+                    gap: 10px;
+                }
             }
 
             &-doc-link {
@@ -81,11 +108,20 @@
                 gap: 10px;
                 align-items: center;
 
+                @include xs {
+                    gap: 5px;
+                }
+
                 img {
                     width: 48px;
                     height: 48px;
                     object-fit: contain;
                     border-radius: 50%;
+
+                    @include sm {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
 
                 &-name, .nav-dropdown-icon {
@@ -94,5 +130,12 @@
                 }
             }
         }
+    }
+
+    @include md {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 60px;
     }
 }

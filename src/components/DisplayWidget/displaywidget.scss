@@ -1,0 +1,65 @@
+@import '/src/assets/sass/mixins/breakpoints';
+
+.display-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    width: 240px;
+    height: 160px;
+
+    padding-inline: 30px;
+    padding-block: 15px;
+    // padding-block-end: 20px;
+    // padding-inline: 30px;
+    // padding-inline-end: 130px;
+
+    svg {
+        height: 40px;
+        width: 40px;
+
+        @include sm {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &-title {
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    &-content {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 28px;
+        text-transform: uppercase;
+
+        @include sm {
+            font-size: 18px;
+        }
+    }
+
+    span {
+        @include sm {
+            margin-inline-start: 50px;
+        }
+    }
+
+    @include xl {
+        width: unset;
+        padding-inline: 25px;
+    }
+
+    @include sm {
+        position: relative;
+        height: fit-content;
+    }
+}

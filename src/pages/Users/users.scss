@@ -1,0 +1,31 @@
+@import '/src/assets/sass/mixins/breakpoints';
+
+
+.page-container {
+    display: grid;
+    grid-template-columns: var(--page-grid-template-columns);
+    padding-inline: var(--page-inline-padding);
+    padding-block-end: 40px;
+
+    .page-title {
+        display: block;
+        margin-block: 40px;
+        font-weight: 500;
+        font-size: 24px;
+        color: var(--primary-color);
+    }
+
+    .page-summary {
+        display: flex;
+        justify-content: space-between;
+
+        @include md {
+            flex-wrap: wrap;
+        }
+
+        @include sm {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

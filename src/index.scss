@@ -1,11 +1,45 @@
 @import url('http://fonts.cdnfonts.com/css/avenir-next-lt-pro');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,400&family=Work+Sans:wght@200&display=swap');
+@import '/src/assets/sass/mixins/breakpoints';
+
+
+// global variable declaration
+
+:root {
+  --primary-color: #213F7D;
+  --secondary-color: #545F7D;
+  --white: #FFFFFF;
+  --green:  #39CDCC;
+  --action-color-green: #39CDCC;
+  --action-color-red: #E4033B;
+  --status-yellow-color: #E9B200;
+  --status-green-color: #39CD62;
+
+  --page-grid-template-columns: 280px 1fr;
+  --page-inline-padding: 40px;
+  // --page-left-content-ruler:
+  // --page-right-content-ruler:
+
+  @include lg {
+    --page-grid-template-columns: 200px 1fr;
+    --page-inline-padding: 20px;
+  }
+
+  @include md {
+    --page-grid-template-columns: 1fr;
+  }
+
+  @include sm {
+    --page-inline-padding: 10px;
+  }
+}
 
 * {
   margin: 0;
   padding: 0;
   background: #FFFFFF;
   box-sizing: border-box;
+  // border: 1px solid red !important;
 }
 
 body {
@@ -18,3 +52,7 @@ body {
   color: var(--secondary-color);
 }
 
+a {color: var(--secondary-color);}         /* Unvisited link  */
+a:visited {color: var(--secondary-color);} /* Visited link    */
+a:hover {color: var(--secondary-color);}   /* Mouse over link */
+a:active {color: var(--secondary-color);} 
