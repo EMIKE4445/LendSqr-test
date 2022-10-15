@@ -56,6 +56,7 @@ export default function UsersTableComponent({ header, data, filters}) {
     const [ sortDirection, setSortDirection ] = useState('desc');
     const [ pageSize, setPageSize ] = useState(10);
     const [ totalSize, setTotalSize ] = useState(0);
+    const [ paginationCount, setPaginationCount ] = useState(0);
     const [currentPage, setCurrentPage ] = useState(1);
     const [from, setFrom ] = useState(0);
     const [to, setTo ] = useState(pageSize);
@@ -77,9 +78,13 @@ export default function UsersTableComponent({ header, data, filters}) {
         setDisplayedTableData(sortedTableData.slice(from, to));
     },[sortedTableData,from,pageSize])
 
+    useEffect(() => {
+        setPaginationCount(Math.ceil(totalSize / pageSize) );
+    },[ totalSize, pageSize ])
+
 
     const handlePageChange = (event, page) => {
-        console.log(typeof(page))
+        // console.log(typeof(page))
         let fromValue = (page - 1) * pageSize;
         let toValue = ((page -1 ) * pageSize) + pageSize;
 
@@ -95,6 +100,8 @@ export default function UsersTableComponent({ header, data, filters}) {
         setFrom(0);
         setTo(page);
     }
+
+    
 
 
     return (
@@ -163,7 +170,7 @@ export default function UsersTableComponent({ header, data, filters}) {
                     <span>out of {totalSize} </span>
                 </div>
                 <Pagination
-                    count={ Math.ceil(totalSize / pageSize) }
+                    count={ paginationCount }
                     page = {currentPage}
                     onChange= {handlePageChange}
                     shape="rounded"
